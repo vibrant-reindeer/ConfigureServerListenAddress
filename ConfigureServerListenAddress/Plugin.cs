@@ -39,9 +39,9 @@ namespace ConfigureServerListenAddress
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }
 
-        public static void StartHost_Prefix()
+        public static void StartHost_Prefix(Unity.Netcode.NetworkManager __instance)
         {
-
+            __instance.GetComponent<UnityTransport>().ConnectionData.ServerListenAddress = serverListenAddress.Value;
         }
     }
 }
